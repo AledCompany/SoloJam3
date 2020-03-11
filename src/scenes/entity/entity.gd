@@ -4,10 +4,10 @@ class_name Entity
 
 const G=9.81
 
-var acceleration:=10
-var speed:=100
+var acceleration:=100
+var speed:=200
 
-var dash_power:=6
+var dash_power:=8
 var dash_dec:=6
 var time_dash:=0.5
 var time_dash_recover:=0.2
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	animation()
 
 func animation():
-	$sprite.y=_height
+	$sprite.position.y=_height
 
 func dash():
 	var dir:=get_direction()

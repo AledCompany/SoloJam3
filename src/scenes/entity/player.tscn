@@ -5,3 +5,6 @@
 
 [node name="player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="sprite" parent="." index="2"]
+scale = Vector2( 3, 3 )
