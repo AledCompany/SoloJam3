@@ -24,6 +24,11 @@ config/name="SoloJam3"
 run/main_scene="res://scenes/BaseScene.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=512
+window/size/height=288
+
 [input]
 
 move_up={

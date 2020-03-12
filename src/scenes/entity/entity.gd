@@ -18,7 +18,7 @@ var atking:=false
 
 var _velocity:= Vector2.ZERO
 var _look_dir:=Vector2.RIGHT
-var _height:=0.0
+export var _height:=0.0
 
 func get_direction() -> Vector2:
 	return Vector2.ZERO
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	animation()
 
 func animation():
-	$sprite.y=_height
+	$sprite.position.y=-_height
 
 func dash():
 	var dir:=get_direction()
@@ -43,6 +43,7 @@ func dash():
 			_velocity=dir.normalized()*speed*dash_power
 			dashing=true
 			can_dash=false
+			$animation_player.play("dash")
 			$timer_dash.start(time_dash)
 
 
