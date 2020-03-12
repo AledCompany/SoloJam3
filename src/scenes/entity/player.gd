@@ -1,5 +1,8 @@
 extends Entity
 
+func _ready():
+	$sprite.play("Idle")
+
 func get_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),

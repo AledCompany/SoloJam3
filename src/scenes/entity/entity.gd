@@ -34,6 +34,10 @@ func _physics_process(delta: float) -> void:
 
 func animation():
 	$sprite.position.y=-_height
+	if get_direction() == Vector2.ZERO :
+		$sprite.play("Idle")
+	else :
+		$sprite.play("Run")
 
 func dash():
 	var dir:=get_direction()
