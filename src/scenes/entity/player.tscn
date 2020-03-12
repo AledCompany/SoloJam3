@@ -4,7 +4,5 @@
 [ext_resource path="res://scenes/entity/player.gd" type="Script" id=2]
 
 [node name="player" instance=ExtResource( 1 )]
+scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
-
-[node name="sprite" parent="." index="2"]
-scale = Vector2( 3, 3 )
