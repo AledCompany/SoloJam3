@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite-character.png-19c6707fe563ae9c3e70b7e94cb1987c.stex"
+path="res://.import/character_idle_front2.png-3217f85f715aa5c03163add634089807.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite-character.png"
-dest_files=[ "res://.import/sprite-character.png-19c6707fe563ae9c3e70b7e94cb1987c.stex" ]
+source_file="res://assets/idle-animation/character_idle_front2.png"
+dest_files=[ "res://.import/character_idle_front2.png-3217f85f715aa5c03163add634089807.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
