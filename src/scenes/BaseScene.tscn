@@ -5,3 +5,4 @@
 [node name="BaseScene" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 2, 2 )

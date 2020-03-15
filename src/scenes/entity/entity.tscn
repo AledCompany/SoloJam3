@@ -10,24 +10,44 @@
 [ext_resource path="res://assets/idle-animation/character_idle_front1.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 8, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+<<<<<<< HEAD
 "frames": [ ExtResource( 8 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
+=======
+>>>>>>> cf45d3e37eeb18b68b3f9e8c6bb6c24f4cba9e00
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=3]
 resource_name = "dash"
 length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:_height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 8.0, 0.0 ]
+}
 
 [node name="entity" type="KinematicBody2D"]
 script = ExtResource( 1 )
