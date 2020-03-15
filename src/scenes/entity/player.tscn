@@ -7,6 +7,8 @@
 scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 
+[node name="shadow" parent="." index="0"]
+position = Vector2( 0, 16 )
+
 [node name="sprite" parent="." index="2"]
-scale = Vector2( 0.5, 0.5 )
 animation = "Idle"
