@@ -30,7 +30,7 @@
 0/z_index = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 )
+points = PoolVector2Array( 48, 64, 16, 64, 16, 48, 48, 48 )
 
 [sub_resource type="TileSet" id=3]
 0/name = "tree.png 0"
@@ -71,4 +71,3 @@ format = 1
 tile_data = PoolIntArray( 131082, 0, 0, 196626, 0, 0, 327684, 0, 0, 327704, 0, 0, 589833, 0, 0, 851980, 0, 0, 851989, 0, 0 )
 
 [node name="player" parent="tile_map_mur" instance=ExtResource( 1 )]
-scale = Vector2( 2, 2 )

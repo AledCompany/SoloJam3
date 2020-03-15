@@ -7,7 +7,7 @@ const G=9.81
 var acceleration:=100
 var speed:=200
 
-var dash_power:=8
+var dash_power:=4
 var dash_dec:=6
 var time_dash:=0.5
 var time_dash_recover:=0.2
