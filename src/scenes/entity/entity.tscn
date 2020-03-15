@@ -1,19 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/entity/entity.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprite-character.png" type="Texture" id=3]
+[ext_resource path="res://assets/idle-animation/character_idle_front2.png" type="Texture" id=3]
 [ext_resource path="res://assets/run-animation/character_run_sideway1.png" type="Texture" id=4]
 [ext_resource path="res://assets/run-animation/character_run_sideway2.png" type="Texture" id=5]
 [ext_resource path="res://assets/run-animation/character_run_sideway3.png" type="Texture" id=6]
 [ext_resource path="res://assets/run-animation/character_run_sideway4.png" type="Texture" id=7]
+[ext_resource path="res://assets/idle-animation/character_idle_front1.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
