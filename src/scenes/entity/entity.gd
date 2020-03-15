@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 
 func animation():
 	$sprite.position.y=-_height
+	$shadow.scale=Vector2.ONE*(1-_height/32)
 	var dir=get_direction()
 	if  dir== Vector2.ZERO :
 		$sprite.play("Idle")
