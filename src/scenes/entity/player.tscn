@@ -3,6 +3,8 @@
 [ext_resource path="res://scenes/entity/entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entity/player.gd" type="Script" id=2]
 
+
+
 [node name="player" instance=ExtResource( 1 )]
 scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
