@@ -14,8 +14,3 @@ position = Vector2( 0, 12 )
 
 [node name="sprite" parent="." index="2"]
 animation = "Idle"
-
-[node name="camera_2d" type="Camera2D" parent="." index="5"]
-current = true
-zoom = Vector2( 0.5, 0.5 )
-smoothing_enabled = true

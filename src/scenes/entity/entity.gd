@@ -5,7 +5,8 @@ class_name Entity
 const G=9.81
 
 var acceleration:=100
-var speed:=200
+var speed:=100
+var max_life:=5
 
 var dash_power:=4
 var dash_dec:=6
