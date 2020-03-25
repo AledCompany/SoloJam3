@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/run-animation/character_run_sideway4.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 16 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
