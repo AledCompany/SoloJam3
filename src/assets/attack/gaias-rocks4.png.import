@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon-breath.png-349931ca472a99a815d21dc3d811c491.stex"
+path="res://.import/gaias-rocks4.png-2d3ed3edb116b6af18c9a06d0b297b08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/attack/dragon-breath.png"
-dest_files=[ "res://.import/dragon-breath.png-349931ca472a99a815d21dc3d811c491.stex" ]
+source_file="res://assets/attack/gaias-rocks4.png"
+dest_files=[ "res://.import/gaias-rocks4.png-2d3ed3edb116b6af18c9a06d0b297b08.stex" ]
 
 [params]
 
