@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://scenes/entity/entity.gd"
-}, {
-"base": "Entity",
-"class": "Player",
-"language": "GDScript",
-"path": "res://scenes/entity/player.gd"
 } ]
 _global_script_class_icons={
-"Entity": "",
-"Player": ""
+"Entity": ""
 }
 
 [application]
@@ -29,10 +23,6 @@ _global_script_class_icons={
 config/name="SoloJam3"
 run/main_scene="res://scenes/BaseScene.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Bdd="*res://scenes/bdd.gd"
 
 [input]
 
