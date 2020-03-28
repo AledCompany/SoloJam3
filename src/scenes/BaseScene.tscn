@@ -139,7 +139,7 @@ shape = SubResource( 5 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="tile_map_mur/stele"]
 frames = SubResource( 7 )
-frame = 7
+frame = 1
 playing = true
 offset = Vector2( 0, -16 )
 
