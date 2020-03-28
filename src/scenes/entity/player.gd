@@ -1,6 +1,12 @@
 extends Entity
 
+class_name Player
+
 func _ready():
+	acceleration=100
+	speed=100
+	max_life=5
+	life=5
 	$sprite.play("Idle")
 
 func get_direction() -> Vector2:
