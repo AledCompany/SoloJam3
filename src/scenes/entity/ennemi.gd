@@ -1,11 +1,14 @@
 extends Entity
 
+signal dead
+
 class_name Ennemi
 export var id:=0
 const main_target:=Vector2(512,300)
 var target:=Vector2(512,300)
 var state=0
 var target_obj=null
+var flying=false
 
 func _ready():
 	var stat=Bdd.ennemis[id]
@@ -13,7 +16,12 @@ func _ready():
 	speed=stat.speed
 	max_life=stat.max_life
 	life=max_life
-
+	$detection/collision_shape_2d.shape.radius=stat.detection_radius
+	$atk/collision_shape_2d.shape.radius=stat.atk_radius
+	flying=stat.flying
+	$collision.shape.extents=stat.collision
+	$hitbox/collision_shape_2d.shape.extents=stat.hitbox
+	$sprite.frames=load(stat.sprite)
 func get_direction() -> Vector2:
 	var dir=Vector2.ZERO
 	if state==0:
@@ -22,7 +30,7 @@ func get_direction() -> Vector2:
 
 func dead():
 	queue_free()
-	
+	emit_signal("dead")
 func _process(delta):
 	if target_obj!=null:
 		target=target_obj.global_position

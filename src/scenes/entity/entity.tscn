@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/entity/entity.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://assets/run-animation/character_run_sideway2.png" type="Texture" id=5]
 [ext_resource path="res://assets/run-animation/character_run_sideway3.png" type="Texture" id=6]
 [ext_resource path="res://assets/run-animation/character_run_sideway4.png" type="Texture" id=7]
+[ext_resource path="res://assets/idle-animation/character_dash1.png" type="Texture" id=8]
+[ext_resource path="res://assets/idle-animation/character_dash2.png" type="Texture" id=9]
+[ext_resource path="res://assets/idle-animation/character_dash3.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -21,6 +24,11 @@ animations = [ {
 "loop": true,
 "name": "Run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "Dash",
+"speed": 10.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -69,6 +77,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 3, 11 )
 
 [node name="entity" type="KinematicBody2D"]
 script = ExtResource( 1 )

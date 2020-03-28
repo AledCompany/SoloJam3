@@ -1,17 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/entity/entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entity/ennemi.gd" type="Script" id=2]
-[ext_resource path="res://assets/monsters/slasher1.png" type="Texture" id=3]
-[ext_resource path="res://assets/monsters/slasher2.png" type="Texture" id=4]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-} ]
+[ext_resource path="res://scenes/entity/chauvesouris.tres" type="SpriteFrames" id=3]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 100.0
@@ -20,12 +11,15 @@ radius = 100.0
 radius = 50.0
 
 [node name="ennemi" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="sprite" parent="." index="2"]
 scale = Vector2( 1, 1 )
-frames = SubResource( 1 )
+frames = ExtResource( 3 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="detection" type="Area2D" parent="." index="5"]

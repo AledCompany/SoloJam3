@@ -18,6 +18,8 @@ var life:=5
 var dead:=false
 var atking:=false
 
+var skills=[]
+
 var _velocity:= Vector2.ZERO
 var _look_dir:=Vector2.RIGHT
 export var _height:=0.0
@@ -40,7 +42,9 @@ func animation():
 	$shadow.scale=Vector2.ONE*(1-_height/32)
 	var dir=get_direction()
 	if  self.is_in_group("player"):
-		if dir== Vector2.ZERO :
+		if dashing:
+			$sprite.play("Dash")
+		elif dir== Vector2.ZERO :
 			$sprite.play("Idle")
 		else :
 			$sprite.play("Run")
@@ -60,6 +64,9 @@ func dash():
 			can_dash=false
 			$animation_player.play("dash")
 			$timer_dash.start(time_dash)
+
+func use_skill(id:int=0):
+	pass
 
 func hit(dmg:int):
 	life=max(0,life-dmg)
