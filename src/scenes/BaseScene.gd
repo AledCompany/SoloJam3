@@ -4,11 +4,12 @@ extends Node2D
 var wave=-1
 var ennemi_left:=0
 var ennemi:=0
-
+var stele_maxlife:=10
+var stele_life:=10
 func _ready():
 	randomize()
 	$canvas_layer/affichage/animation_player.connect("animation_finished",self,"affichage_animation_finished")
-	$canvas_layer/affichage/label.text="Game made by Number 6406 and Deakcor"
+	$canvas_layer/affichage/label.text="Game made by Number6406 and Deakcor"
 	$canvas_layer/affichage/animation_player.play("display",-1,0.3)
 
 
@@ -30,7 +31,7 @@ func check_ennemi_lef():
 		change_wave()
 	$canvas_layer/affichage/ennemi.text=str(ennemi-ennemi_left)+"/"+str(ennemi)
 func change_wave():
-	
+	stele_life=stele_maxlife
 	wave+=1
 	$canvas_layer/affichage/label.text="Wave "+str(wave)
 	ennemi=sqrt(10+wave)
@@ -46,3 +47,10 @@ func change_wave():
 			tmp.position.y=randi()%600
 			tmp.position.x=randi()%2*1024
 		add_child(tmp)
+
+
+func _on_stele_body_entered(body):
+	if body is Ennemi:
+		stele_life=max(0,stele_life-body.life)
+		if stele_life==0:
+			print("loose")
