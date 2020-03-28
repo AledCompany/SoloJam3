@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity",
+"class": "Ennemi",
+"language": "GDScript",
+"path": "res://scenes/entity/ennemi.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scenes/entity/player.gd"
 } ]
 _global_script_class_icons={
+"Ennemi": "",
 "Entity": "",
 "Player": ""
 }

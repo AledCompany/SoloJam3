@@ -1,6 +1,6 @@
 extends Entity
 
-
+class_name Ennemi
 export var id:=0
 const main_target:=Vector2(512,300)
 var target:=Vector2(512,300)
@@ -31,17 +31,13 @@ func _process(delta):
 
 func _on_detection_body_entered(body):
 	if state==0:
-		if (body is Player) or body.is_in_group("stele"):
+		if (body is Player):
 			target_obj=body
 
 
 func _on_detection_body_exited(body):
 	if target_obj==body:
 		target_obj=null
-		for k in $detection.get_overlapping_bodies():
-			if state==0:
-				if k!=body and ((k is Player) or k.is_in_group("stele")):
-					target_obj=k
 		
 
 func _on_atk_body_entered(body):

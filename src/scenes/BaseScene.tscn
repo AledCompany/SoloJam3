@@ -139,7 +139,7 @@ shape = SubResource( 5 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="tile_map_mur/stele"]
 frames = SubResource( 7 )
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( 0, -16 )
 
@@ -158,3 +158,4 @@ margin_left = 0.950012
 margin_top = 0.949997
 margin_right = 0.949951
 margin_bottom = 0.950012
+[connection signal="body_entered" from="tile_map_mur/stele" to="." method="_on_stele_body_entered"]
