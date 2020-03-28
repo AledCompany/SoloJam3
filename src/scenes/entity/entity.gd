@@ -39,10 +39,11 @@ func animation():
 	$sprite.position.y=-_height
 	$shadow.scale=Vector2.ONE*(1-_height/32)
 	var dir=get_direction()
-	if  dir== Vector2.ZERO :
-		$sprite.play("Idle")
-	else :
-		$sprite.play("Run")
+	if  self.is_in_group("player"):
+		if dir== Vector2.ZERO :
+			$sprite.play("Idle")
+		else :
+			$sprite.play("Run")
 		
 	if dir.x>0:
 		$sprite.flip_h=false
