@@ -18,11 +18,6 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://scenes/entity/entity.gd"
-}, {
-"base": "Entity",
-"class": "Player",
-"language": "GDScript",
-"path": "res://scenes/entity/player.gd"
 } ]
 _global_script_class_icons={
 "Ennemi": "",
