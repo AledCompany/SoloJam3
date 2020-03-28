@@ -17,4 +17,5 @@ position = Vector2( 0, 14 )
 shape = SubResource( 1 )
 
 [node name="sprite" parent="." index="2"]
+scale = Vector2( 1, 1 )
 animation = "Idle"

@@ -14,7 +14,8 @@ var time_dash:=0.5
 var time_dash_recover:=0.2
 var can_dash:=true
 var dashing:=false
-
+var life:=5
+var dead:=false
 var atking:=false
 
 var _velocity:= Vector2.ZERO
@@ -25,13 +26,14 @@ func get_direction() -> Vector2:
 	return Vector2.ZERO
 	
 func _physics_process(delta: float) -> void:
-	var dir:=get_direction().normalized()
-	if !dashing and !atking:
-		_velocity = lerp(_velocity,speed*dir,acceleration*delta)
-	elif dashing:
-		_velocity=lerp(_velocity,Vector2.ZERO,delta*dash_dec)
-	move_and_slide(_velocity)
-	animation()
+	if !dead:
+		var dir:=get_direction().normalized()
+		if !dashing and !atking:
+			_velocity = lerp(_velocity,speed*dir,acceleration*delta)
+		elif dashing:
+			_velocity=lerp(_velocity,Vector2.ZERO,delta*dash_dec)
+		move_and_slide(_velocity)
+		animation()
 
 func animation():
 	$sprite.position.y=-_height
@@ -49,7 +51,7 @@ func animation():
 
 func dash():
 	var dir:=get_direction()
-	if can_dash and !dashing:
+	if can_dash and !dashing and !dead:
 		atking=false
 		if dir!=Vector2.ZERO:
 			_velocity=dir.normalized()*speed*dash_power
@@ -58,6 +60,14 @@ func dash():
 			$animation_player.play("dash")
 			$timer_dash.start(time_dash)
 
+func hit(dmg:int):
+	life=max(0,life-dmg)
+	if life==0:
+		dead=true
+		$animation_player.play("die")
+
+func dead():
+	pass
 
 func _on_timer_dash_timeout():
 	if dashing:

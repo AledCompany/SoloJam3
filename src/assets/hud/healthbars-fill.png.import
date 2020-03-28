@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon-breath.png-349931ca472a99a815d21dc3d811c491.stex"
+path="res://.import/healthbars-fill.png-56c32ba075668075a45ecb72c43007f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/attack/dragon-breath.png"
-dest_files=[ "res://.import/dragon-breath.png-349931ca472a99a815d21dc3d811c491.stex" ]
+source_file="res://assets/hud/healthbars-fill.png"
+dest_files=[ "res://.import/healthbars-fill.png-56c32ba075668075a45ecb72c43007f3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
