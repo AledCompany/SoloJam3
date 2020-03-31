@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/entity/entity.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/idle-animation/character_dash1.png" type="Texture" id=8]
 [ext_resource path="res://assets/idle-animation/character_dash2.png" type="Texture" id=9]
 [ext_resource path="res://assets/idle-animation/character_dash3.png" type="Texture" id=10]
+[ext_resource path="res://assets/sound/ShootBat.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/Hit.ogg" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -77,7 +79,23 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 3, 11 )
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "dmg"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="entity" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -100,8 +118,23 @@ frames = SubResource( 2 )
 anims/dash = SubResource( 3 )
 anims/die = SubResource( 4 )
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." groups=[
+"hitbox",
+]]
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 5 )
+
+[node name="audio_shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="audio_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="timer_shotdelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="anim_dmg" type="AnimationPlayer" parent="."]
+anims/dmg = SubResource( 6 )
 [connection signal="timeout" from="timer_dash" to="." method="_on_timer_dash_timeout"]
+[connection signal="timeout" from="timer_shotdelay" to="." method="_on_timer_shotdelay_timeout"]

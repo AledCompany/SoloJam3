@@ -17,7 +17,10 @@ var dashing:=false
 var life:=5
 var dead:=false
 var atking:=false
+var flying=0
 
+
+var shots=[]
 var skills=[]
 
 var _velocity:= Vector2.ZERO
@@ -26,7 +29,10 @@ export var _height:=0.0
 
 func get_direction() -> Vector2:
 	return Vector2.ZERO
-	
+
+func get_target_position() -> Vector2:
+	return Vector2.ZERO
+
 func _physics_process(delta: float) -> void:
 	if !dead:
 		var dir:=get_direction().normalized()
@@ -54,25 +60,41 @@ func animation():
 	elif dir.x<0:
 		$sprite.flip_h=true
 
-func dash():
-	var dir:=get_direction()
-	if can_dash and !dashing and !dead:
-		atking=false
-		if dir!=Vector2.ZERO:
-			_velocity=dir.normalized()*speed*dash_power
-			dashing=true
-			can_dash=false
-			$animation_player.play("dash")
-			$timer_dash.start(time_dash)
 
-func use_skill(id:int=0):
-	pass
+
+func use_skill(index:int=0):
+	if skills[index].ready and $timer_shotdelay.time_left==0:
+		skills[index].use()
+		for k in skills[index].shots:
+			if skills[index].shot_delay==0:
+				spawn_projectile(skills[index].projectile_id)
+			else:
+				shots.push_back(skills[index].projectile_id)
+		if skills[index].shot_delay!=0:
+			spawn_projectile(skills[index].projectile_id)
+			$timer_shotdelay.start(skills[index].shot_delay)
+
+func _on_timer_shotdelay_timeout():
+	spawn_projectile(shots.pop_front(),false)
+	if shots.size()>0:
+		$timer_shotdelay.start()
+
+func spawn_projectile(id:int=0,withsound=true):
+	var tmp=preload("res://scenes/entity/projectile.tscn").instance()
+	tmp.init(id,get_instance_id(),withsound)
+	tmp.global_position=global_position
+	tmp.dir=(get_target_position()-global_position).normalized()
+	get_parent().add_child(tmp)
 
 func hit(dmg:int):
-	life=max(0,life-dmg)
-	if life==0:
-		dead=true
-		$animation_player.play("die")
+	if !dead:
+		
+		life=max(0,life-dmg)
+		if life==0:
+			dead=true
+			$animation_player.play("die")
+		$audio_hit.play()
+		$anim_dmg.play("dmg")
 
 func dead():
 	pass
@@ -83,3 +105,6 @@ func _on_timer_dash_timeout():
 		$timer_dash.start(time_dash_recover)
 	else:
 		can_dash=true
+
+
+

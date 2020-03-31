@@ -8,7 +8,7 @@ const main_target:=Vector2(512,300)
 var target:=Vector2(512,300)
 var state=0
 var target_obj=null
-var flying=false
+
 
 func _ready():
 	var stat=Bdd.ennemis[id]
@@ -22,13 +22,24 @@ func _ready():
 	$collision.shape.extents=stat.collision
 	$hitbox/collision_shape_2d.shape.extents=stat.hitbox
 	$sprite.frames=load(stat.sprite)
+	skills.append(Skills.new(stat.skill_id))
 func get_direction() -> Vector2:
 	var dir=Vector2.ZERO
 	if state==0:
 		dir=(target-position).normalized()
+	elif state==1:
+		use_skill(0)
 	return dir
 
+func get_target_position():
+	if target_obj!=null:
+		if target_obj.dead:
+			target_obj=null
+			state=0
+	return(target)
+
 func dead():
+	dead=true
 	queue_free()
 	emit_signal("dead")
 func _process(delta):
@@ -36,10 +47,12 @@ func _process(delta):
 		target=target_obj.global_position
 	else:
 		target=main_target
+	for k in range(0,skills.size()):
+		skills[k]._process(delta)
 
 func _on_detection_body_entered(body):
 	if state==0:
-		if (body is Player):
+		if (body is Player) and !body.dead:
 			target_obj=body
 
 
@@ -51,6 +64,7 @@ func _on_detection_body_exited(body):
 func _on_atk_body_entered(body):
 	if body==target_obj:
 		state=1
+
 
 
 func _on_atk_body_exited(body):
